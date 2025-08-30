@@ -17,20 +17,20 @@ It serves as a record of my journey of learning and practicing problem-solving s
 
 🧠 Learning Goals
 
-Strengthen problem-solving skills with DSA.
+1) Strengthen problem-solving skills with DSA.
 
-Write clean, modular, and well-commented C++ code.
+2) Write clean, modular, and well-commented C++ code.
 
-Build a solid foundation for competitive programming and interview prep.
+3) Build a solid foundation for competitive programming and interview prep.
 
-Document my progress so I (and others) can revisit concepts easily.
+4) Document my progress so I (and others) can revisit concepts easily.
 
 📖 Resources I’m Following
 
-Introduction to Algorithms – Cormen (CLRS)
+1) Introduction to Algorithms – Cormen (CLRS)
 
-GeeksforGeeks, LeetCode, Codeforces
+2) GeeksforGeeks, LeetCode, Codeforces
 
-Striver’s DSA Sheet
+3) Striver’s DSA Sheet
 
 🔥 Work in progress… Stay tuned as I continue documenting my DSA journey with C++.
