@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+//function for finding partition index
 int partition(int arr[],int low,int high){
     int pivot=arr[low];
     int i=low;
@@ -24,6 +24,7 @@ int partition(int arr[],int low,int high){
     arr[low]=t;
     return j;
 }
+//fuction for quick sort
 void quickSort(int arr[],int low,int high){
     if(low<high){
         int pIndx= partition(arr,low,high);
