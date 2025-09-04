@@ -8,6 +8,19 @@ int main(){
     for(int i=0;i<n;i++){
         cin>>arr[i];
     }
+
+    //using xor(we can't take same element inside the array)
+    // int xor1=0,xor2=0;
+    // for(int i=0;i<=n;i++){
+    //     xor1^=i;
+    // }
+    // for(int j=0;j<n;j++){
+    //     xor2^=arr[j];
+    // }
+    // int miss=xor1^xor2;
+    // cout<<miss;
+
+    //can take same element inside the array
     bool found;
     unordered_map<int,bool> mpp;
     for(int i=1;i<=n;i++){
