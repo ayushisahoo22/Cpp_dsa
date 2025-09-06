@@ -15,12 +15,15 @@ int main(){
     unordered_map<long long,int>mpp;
     for(int i=0;i<n;i++){
         sum+=arr[i];
+        //to update maxSum if sum=k
         if(sum==k){
             maxSum=i+1;
         }
+        //to check if sum-k is present
         if(mpp.find(sum-k)!=mpp.end()){
             maxSum=max(maxSum,i-mpp[sum-k]);
         }
+        //if sum is not present already
         if(mpp.find(sum)==mpp.end()){
             mpp[sum]=i;
         }
