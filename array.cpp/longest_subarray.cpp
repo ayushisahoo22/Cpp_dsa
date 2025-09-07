@@ -11,6 +11,9 @@ int main(){
     int k;
     cout<<"Enter the sum: ";
     cin>>k;
+
+    //OPTIMAL FOR NEGATIVE ALONG WITH POSITIVE AND ZERO ELEMENTS
+    
     long long sum=0;int maxSum=0;
     unordered_map<long long,int>mpp;
     for(int i=0;i<n;i++){
@@ -29,4 +32,26 @@ int main(){
         }
     }
     cout<<"Length of longest subarray is: "<<maxSum;
+
+
+    //TWO POINTERS APPROACH FOR POSITIVE AND ZERO ELEMENTS
+    
+    /*int left=0,right=0;
+    long long sum=0;int maxLen =0;
+    while(right<n){
+        while(sum>k){
+            sum-=arr[left];
+            left++;
+        }
+        
+        if(right<n){
+            sum+=arr[right];
+        }
+        if(sum==k){
+            maxLen=max(maxLen,right-left+1);
+        }
+        right++;
+        
+    }
+    cout<<"Length of longest subarray is: "<<maxLen;*/
 }
