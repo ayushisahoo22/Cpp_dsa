@@ -25,6 +25,8 @@ int main(){
     return 0;*/
 
     //using two pointer approach
+    // start(s) will begin from 0 and begin to check with the end element(e)
+    // while decrementing it if the sum is not equal to target
     int s;int e=n-1;
     for(s=0;s<=e;s++){
         if(arr[s]+arr[e]==target){
