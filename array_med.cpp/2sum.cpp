@@ -11,6 +11,7 @@ int main(){
     int target;
     cout<<"Enter the value of target: ";
     cin>>target;
+    /*
     unordered_map<int,int>mpp;
     for(int i=0;i<n;i++){
         int x=target-arr[i];
@@ -21,5 +22,16 @@ int main(){
         mpp[arr[i]]=i;
     }
     cout<<"Not found";
-    return 0;
+    return 0;*/
+
+    //using two pointer approach
+    int s;int e=n-1;
+    for(s=0;s<=e;s++){
+        if(arr[s]+arr[e]==target){
+            cout<<s<<" "<<e;
+            return 0;
+        }else{
+            e--;
+        }
+    }
 }
