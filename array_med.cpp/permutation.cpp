@@ -17,6 +17,7 @@ int main(){
         }
     }
     //if break point does not exist
+    //to reverse the whole array
     if(ind==-1){
         reverse(arr.begin(),arr.end());
     }
