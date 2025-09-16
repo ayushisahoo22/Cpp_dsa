@@ -22,8 +22,8 @@ int main(){
         reverse(arr.begin(),arr.end());
     }
     
-    //find net greater ele then swap
-    for(int i=n-1;i>=0;i++){
+    //find next greater ele then swap
+    for(int i=n-1;i>ind;i++){
         if(arr[i]>arr[ind]){
             swap(arr[i],arr[ind]);
             break;
