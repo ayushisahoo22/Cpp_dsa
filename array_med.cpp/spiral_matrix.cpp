@@ -1,10 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main(){
-    int n;
+    int m,n;
     cout << "Enter the number of rows & cols: ";
-    cin >> n;
-    int arr[n][n];
+    cin >>m>>n;
+    int arr[m][n];
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
@@ -13,7 +13,7 @@ int main(){
         }
         cout << endl;
     }
-    int top=0 ,bottom=n-1,left=0,right=n-1;
+    int top=0 ,bottom=m-1,left=0,right=n-1;
     while(left<=right && top<=bottom){
         //right
         for(int i=left;i<=right;i++){
