@@ -11,5 +11,15 @@ int main(){
     }  
     cout<<res<<endl;*/
 
-    
+    //to print any nth row
+    /*int n;
+    cout<<"Enter the row number: ";
+    cin>>n;
+    int res=1;
+    cout<<res<<" ";
+    for(int i=1;i<n;i++){
+        res*=(n-i);
+        res/=(i);
+        cout<<res<<" ";
+    }*/ 
 }
