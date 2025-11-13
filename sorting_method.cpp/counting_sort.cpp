@@ -2,7 +2,12 @@
 #include <vector>
 using namespace std;
 
-//TC->O(N)
+//TC->O(N+N+K+N)=O(N+K)
+// n(for finding max ele to have k range)
+// n(for storing the freq in count)
+// k(for updating the count array)
+// n(for building the output array)
+
 //SUITABLE FOR:
 // The range of values is not too large
 // The array contains the non-negative numbers
