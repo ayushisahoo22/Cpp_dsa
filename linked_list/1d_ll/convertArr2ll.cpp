@@ -35,6 +35,15 @@ int lengthLL(Node *head){
     return cnt;
 }
 
+//To search an element
+int isPresent(Node *head,int x){
+    Node *temp=head;
+    while(temp){
+        if(temp->data==x) return 1;
+        temp=temp->next;
+    }
+    return 0;
+} 
 
 int main(){
     vector<int>arr={3,7,1,8};
@@ -50,5 +59,11 @@ int main(){
     cout<<"\n";
 
     int length=lengthLL(head);
-    cout<<length;
+    cout<<length<<endl;
+
+    int found1=isPresent(head,1);
+    cout<<found1<<endl;
+
+    int found2=isPresent(head,2);
+    cout<<found2<<endl;
 }
