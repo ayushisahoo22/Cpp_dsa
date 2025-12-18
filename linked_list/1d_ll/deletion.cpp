@@ -40,7 +40,7 @@ void print(Node *head){
     return head;
 }*/
 
-Node *removeTail(Node *head){
+/*Node *removeTail(Node *head){
     if(head==NULL || head->next==NULL) return NULL;
     Node *temp=head;
     while(temp->next->next != NULL){
@@ -49,19 +49,50 @@ Node *removeTail(Node *head){
     free(temp->next);
     temp->next=nullptr;
     return head;
+}*/
+
+Node *removeK(Node *head,int k){
+    if(head==NULL) return head;
+    if(k==1){
+        Node *temp=head;
+        head=head->next;
+        delete temp;
+        return head;
+    }
+    int cnt=0;
+    Node *temp=head;
+    Node *prev=NULL;
+    while(temp!=NULL){
+        cnt++;
+        if(cnt==k){
+            prev->next=prev->next->next;
+            delete temp;
+            break;
+        }
+        prev=temp;
+        temp=temp->next;
+    }
+    return head;
 }
 
 int main(){
     vector<int>arr={5,8,2,0,1};
     Node *head=convertArr2LL(arr);
-    print(head);
-    cout<<endl;
+    // print(head);
+    // cout<<endl;
 
     //after deletion of head
     // head=removeHead(head);
     // print(head);
 
     //after deletion of tail
-    head=removeTail(head);
+    // head=removeTail(head);
+    // print(head);
+
+    //after deletion of kth element
+    int k;
+    cout<<"Enter k: ";
+    cin>>k;
+    head=removeK(head,k);
     print(head);
 }
