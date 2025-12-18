@@ -51,7 +51,7 @@ void print(Node *head){
     return head;
 }*/
 
-Node *removeK(Node *head,int k){
+/*Node *removeK(Node *head,int k){
     if(head==NULL) return head;
     if(k==1){
         Node *temp=head;
@@ -65,6 +65,28 @@ Node *removeK(Node *head,int k){
     while(temp!=NULL){
         cnt++;
         if(cnt==k){
+            prev->next=prev->next->next;
+            delete temp;
+            break;
+        }
+        prev=temp;
+        temp=temp->next;
+    }
+    return head;
+}*/
+
+Node *removeEle(Node *head,int val){
+    if(head==NULL) return head;
+    if(head->data==val){
+        Node *temp=head;
+        head=head->next;
+        delete temp;
+        return head;
+    }
+    Node *temp=head;
+    Node *prev=NULL;
+    while(temp!=NULL){
+        if(temp->data==val){
             prev->next=prev->next->next;
             delete temp;
             break;
@@ -90,9 +112,16 @@ int main(){
     // print(head);
 
     //after deletion of kth element
-    int k;
-    cout<<"Enter k: ";
-    cin>>k;
-    head=removeK(head,k);
+    // int k;
+    // cout<<"Enter k: ";
+    // cin>>k;
+    // head=removeK(head,k);
+    // print(head);
+
+    //after deletion of val
+    int val;
+    cout<<"Enter value to delete: ";
+    cin>>val;
+    head=removeEle(head,val);
     print(head);
 }
