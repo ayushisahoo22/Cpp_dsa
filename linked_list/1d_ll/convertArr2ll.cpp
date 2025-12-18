@@ -24,6 +24,18 @@ Node *convertArr2LL(vector<int>arr){
     return head;
 }
 
+//To find lenght of linked list
+int lengthLL(Node *head){
+    int cnt=0;
+    Node *temp=head;
+    while(temp){
+        cnt++;
+        temp=temp->next;
+    }
+    return cnt;
+}
+
+
 int main(){
     vector<int>arr={3,7,1,8};
     Node *head=convertArr2LL(arr);
@@ -35,4 +47,8 @@ int main(){
         cout<<ptr->data<<" ";
         ptr=ptr->next;
     }
+    cout<<"\n";
+
+    int length=lengthLL(head);
+    cout<<length;
 }
