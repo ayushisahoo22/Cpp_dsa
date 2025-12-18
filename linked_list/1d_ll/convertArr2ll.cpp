@@ -27,5 +27,12 @@ Node *convertArr2LL(vector<int>arr){
 int main(){
     vector<int>arr={3,7,1,8};
     Node *head=convertArr2LL(arr);
-    cout<<head->data<<" "<<head->next;
+    cout<<head->data<<" "<<head->next<<endl;
+
+    //traversal
+    Node *ptr=head;
+    while(ptr){
+        cout<<ptr->data<<" ";
+        ptr=ptr->next;
+    }
 }
