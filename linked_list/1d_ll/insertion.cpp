@@ -38,9 +38,20 @@ void print(Node *head){
     }
 }
 
-Node *insertHead(Node *head,int val){
-    Node *temp=new Node(val,head);
-    head=temp;
+// Node *insertHead(Node *head,int val){
+//     Node *temp=new Node(val,head);
+//     head=temp;
+//     return head;
+// }
+
+Node *insertTail(Node *head,int val){
+    Node *temp=new Node(val);
+    if(head==NULL) return temp;
+    Node *mover=head;
+    while(mover->next!=NULL){
+        mover=mover->next;
+    } 
+    mover->next=temp;
     return head;
 }
 
@@ -50,6 +61,9 @@ int main(){
     int val;
     cout<<"Enter a value: ";
     cin>>val;
-    head=insertHead(head,val);
+    // head=insertHead(head,val);
+    // print(head);
+
+    head=insertTail(head,val);
     print(head);
 }
