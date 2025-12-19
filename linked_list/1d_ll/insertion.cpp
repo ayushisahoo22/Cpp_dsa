@@ -55,27 +55,49 @@ void print(Node *head){
 //     return head;
 // }
 
-Node *insertPos(Node *head,int pos,int val){
+// Node *insertPos(Node *head,int pos,int val){
+//     if(head==NULL){
+//         if(pos==1){
+//             Node *temp=new Node(val);
+//             return temp;
+//         }
+//         else{
+//             return head;
+//         }
+//     }
+//     if(pos==1){
+//         Node *temp=new Node(val,head);
+//         head=temp;
+//         return temp;
+//     }
+//     Node *n=new Node(val);
+//     Node *mover=head;
+//     int cnt=0;
+//     while(mover){
+//         cnt++;
+//         if(cnt==pos-1){
+//             n->next=mover->next;
+//             mover->next=n;
+//             break;
+//         }
+//         mover=mover->next;
+//     }
+//     return head;
+// }
+
+Node *insertBeforeEl(Node *head,int el,int val){
     if(head==NULL){
-        if(pos==1){
-            Node *temp=new Node(val);
-            return temp;
-        }
-        else{
-            return head;
-        }
+        return head;
     }
-    if(pos==1){
+    if(head->data==el){
         Node *temp=new Node(val,head);
         head=temp;
         return temp;
     }
     Node *n=new Node(val);
     Node *mover=head;
-    int cnt=0;
-    while(mover){
-        cnt++;
-        if(cnt==pos-1){
+    while(mover!=NULL){
+        if(mover->next->data==el){
             n->next=mover->next;
             mover->next=n;
             break;
@@ -97,9 +119,15 @@ int main(){
     // head=insertTail(head,val);
     // print(head);
 
-    int pos;
-    cout<<"Enter position: ";
-    cin>>pos;
-    head=insertPos(head,pos,val);
+    // int pos;
+    // cout<<"Enter position: ";
+    // cin>>pos;
+    // head=insertPos(head,pos,val);
+    // print(head);
+
+    int el;
+    cout<<"Enter element: ";
+    cin>>el;
+    head=insertBeforeEl(head,el,val);
     print(head);
 }
