@@ -42,14 +42,14 @@ void print(Node *head){
     }
 }
 
-// Node *deleteHead(Node *head){
-//     if(head==NULL || head->next==NULL) return NULL;
-//     Node *temp=head;
-//     head=head->next;
-//     head->back=nullptr;
-//     delete temp;
-//     return head;
-// }
+Node *deleteHead(Node *head){
+    if(head==NULL || head->next==NULL) return NULL;
+    Node *temp=head;
+    head=head->next;
+    head->back=nullptr;
+    delete temp;
+    return head;
+}
 
 Node *deleteTail(Node *head){
     if(head==NULL || head->next==NULL) return NULL;
@@ -58,6 +58,33 @@ Node *deleteTail(Node *head){
         temp=temp->next;
     }
     temp->back->next=nullptr;
+    delete temp;
+    return head;
+}
+
+Node *deleteK(Node *head,int k){
+    if(head==NULL) return NULL;
+    Node *temp=head;
+    int cnt=0;
+    while(temp){
+        cnt++;
+        if(cnt==k){
+            break;
+        }
+        temp=temp->next;
+    }
+    Node *prev=temp->back;
+    Node *front=temp->next;
+    if(prev==NULL && front==NULL){
+        delete temp;
+        return head;
+    }else if(prev==NULL){
+        return deleteHead(head);
+    }else if(front==NULL){
+        return deleteTail(head);
+    }
+    prev->next=front;
+    front->back=prev;
     delete temp;
     return head;
 }
@@ -73,6 +100,13 @@ int main(){
     // print(head);
 
     //Deletion of tail
-    head=deleteTail(head);
+    // head=deleteTail(head);
+    // print(head);
+
+    //Deletion of Kth element
+    int k;
+    cout<<"Enter k: ";
+    cin>>k;
+    head=deleteK(head,k);
     print(head);
 }
