@@ -42,11 +42,22 @@ void print(Node *head){
     }
 }
 
-Node *deleteHead(Node *head){
+// Node *deleteHead(Node *head){
+//     if(head==NULL || head->next==NULL) return NULL;
+//     Node *temp=head;
+//     head=head->next;
+//     head->back=nullptr;
+//     delete temp;
+//     return head;
+// }
+
+Node *deleteTail(Node *head){
     if(head==NULL || head->next==NULL) return NULL;
     Node *temp=head;
-    head=head->next;
-    head->back=nullptr;
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    temp->back->next=nullptr;
     delete temp;
     return head;
 }
@@ -58,6 +69,10 @@ int main(){
     cout<<endl;
 
     //Deletion of head
-    head=deleteHead(head);
+    // head=deleteHead(head);
+    // print(head);
+
+    //Deletion of tail
+    head=deleteTail(head);
     print(head);
 }
