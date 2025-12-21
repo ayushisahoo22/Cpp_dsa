@@ -54,6 +54,22 @@ Node *insertHead(Node *head,int val){
     return head;
 }
 
+Node *insertTail(Node *head,int val){
+    if(head==NULL){
+        Node *temp=new Node(val);
+        head=temp;
+        return head;
+    }
+    Node *temp=new Node(val);
+    Node *mover=head;
+    while(mover->next!=NULL){
+        mover=mover->next;
+    }
+    mover->next=temp;
+    temp->back=mover;
+    return head;
+}
+
 int main(){
     vector<int>arr={2,5,7,3,1,8};
     Node *head=convertArr2DLL(arr);
@@ -61,9 +77,14 @@ int main(){
     cout<<endl;
     int val;
     cout<<"Enter value: ";
-    
-    //Insertion at head
     cin>>val;
-    head=insertHead(head,val);
+
+    //Insertion at head
+    // cin>>val;
+    // head=insertHead(head,val);
+    // print(head);
+
+    //Insertion at tail
+    head=insertTail(head,val);
     print(head);
 }
