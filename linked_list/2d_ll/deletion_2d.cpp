@@ -89,6 +89,30 @@ Node *deleteK(Node *head,int k){
     return head;
 }
 
+Node *deleteVal(Node *head,int val){
+    if(head==NULL) return NULL;
+    Node *temp=head;
+    while(temp){
+        if(temp->data==val){
+            break;
+        }
+        temp=temp->next;
+    }
+    if(temp->back==NULL){
+        head=temp->next;
+        if(head!=NULL){
+            head->back=nullptr;
+        }
+    }else{
+        temp->back->next=temp->next;
+        if(temp->next!=NULL){
+            temp->next->back=temp->back;
+        }
+    }
+    delete temp;
+    return head;
+}
+
 int main(){
     vector<int>arr={2,5,7,3,1,8};
     Node *head=convertArr2DLL(arr);
@@ -104,9 +128,16 @@ int main(){
     // print(head);
 
     //Deletion of Kth element
-    int k;
-    cout<<"Enter k: ";
-    cin>>k;
-    head=deleteK(head,k);
+    // int k;
+    // cout<<"Enter k: ";
+    // cin>>k;
+    // head=deleteK(head,k);
+    // print(head);
+
+    //Deletion of value
+    int val;
+    cout<<"Enter value: ";
+    cin>>val;
+    head=deleteVal(head,val);
     print(head);
 }
