@@ -88,6 +88,39 @@ Node *insertBefTail(Node *head,int val){
     return head;
 }
 
+Node *insertBefPos(Node *head,int val,int pos){
+    if(head==NULL){
+        if(pos==1){
+            Node *temp=new Node(val);
+            return temp;
+        }else{
+            return NULL;
+        }
+    }
+    if(pos==1){
+        Node *temp=new Node(val,head,nullptr);
+        head->back=temp;
+        head=temp;
+        return head;
+    }
+    Node *temp=new Node(val);
+    Node *mover=head;
+    int cnt=0;
+    while(mover){
+        cnt++;
+        if(cnt==pos){
+            break;
+        }
+        mover=mover->next;
+    }
+    Node *spot=mover->back;
+    temp->next=spot->next;
+    spot->next=temp;
+    temp->back=spot;
+    mover->back=temp;
+    return head;
+}
+
 int main(){
     vector<int>arr={2,5,7,3,1,8};
     Node *head=convertArr2DLL(arr);
@@ -107,6 +140,13 @@ int main(){
     // print(head);
 
     //Insertion before tail 
-    head=insertBefTail(head,val);
+    // head=insertBefTail(head,val);
+    // print(head);
+
+    //Inserting before Kth
+    int pos;
+    cout<<"Enter position: ";
+    cin>>pos;
+    head=insertBefPos(head,val,pos);
     print(head);
 }
