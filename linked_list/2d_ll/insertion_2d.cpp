@@ -70,6 +70,24 @@ Node *insertTail(Node *head,int val){
     return head;
 }
 
+Node *insertBefTail(Node *head,int val){
+    if(head==NULL){
+        Node *temp=new Node(val);
+        head=temp;
+        return head;
+    }
+    Node *temp=new Node(val);
+    Node *mover=head;
+    while(mover->next->next!=NULL){
+        mover=mover->next;
+    }
+    temp->next=mover->next;
+    mover->next=temp;
+    temp->back=mover;
+    temp->next->back=temp;
+    return head;
+}
+
 int main(){
     vector<int>arr={2,5,7,3,1,8};
     Node *head=convertArr2DLL(arr);
@@ -85,6 +103,10 @@ int main(){
     // print(head);
 
     //Insertion at tail
-    head=insertTail(head,val);
+    // head=insertTail(head,val);
+    // print(head);
+
+    //Insertion before tail 
+    head=insertBefTail(head,val);
     print(head);
 }
