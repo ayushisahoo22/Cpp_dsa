@@ -45,39 +45,58 @@ void print(Node *head){
 }
 
 //TC->O(N+M)   SC->0(N+M)
-Node *insertEnd(Node *head,int value){
-    Node *n=new Node(value);
-    if(head==NULL) return n;
-    Node* temp=head;
-    while(temp->next!=NULL){
+// Node *insertEnd(Node *head,int value){
+//     Node *n=new Node(value);
+//     if(head==NULL) return n;
+//     Node* temp=head;
+//     while(temp->next!=NULL){
+//         temp=temp->next;
+//     }
+//     temp->next=n;
+//     return head; 
+// }
+
+// Node* mergeTwoLists(Node* list1, Node* list2) {
+//     Node *i=list1;
+//     Node *j=list2;
+//     Node *result=NULL;
+//     while(i!=NULL && j!=NULL){
+//         if(i->data<=j->data){
+//             result=insertEnd(result,i->data);
+//             i=i->next;
+//         }else{
+//             result=insertEnd(result,j->data);
+//             j=j->next;
+//         }
+//     }
+//     while(i!=NULL){
+//         result=insertEnd(result,i->data);
+//         i=i->next;
+//     }
+//     while(j!=NULL){
+//         result=insertEnd(result,j->data);
+//         j=j->next;
+//     }
+//     return result;
+// }
+
+//TC->O(N+M)   SC->O(1)
+Node* mergeTwoLists(Node* list1, Node* list2) {
+    Node *dummy= new Node();
+    Node *temp=dummy;
+    while(list1 && list2){
+        if(list1->data<=list2->data){
+            temp->next=list1;
+            list1=list1->next;
+        }else{
+            temp->next=list2;
+            list2=list2->next;
+        }
         temp=temp->next;
     }
-    temp->next=n;
-    return head; 
-}
-
-Node* mergeTwoLists(Node* list1, Node* list2) {
-    Node *i=list1;
-    Node *j=list2;
-    Node *result=NULL;
-    while(i!=NULL && j!=NULL){
-        if(i->data<=j->data){
-            result=insertEnd(result,i->data);
-            i=i->next;
-        }else{
-            result=insertEnd(result,j->data);
-            j=j->next;
-        }
-    }
-    while(i!=NULL){
-        result=insertEnd(result,i->data);
-        i=i->next;
-    }
-    while(j!=NULL){
-        result=insertEnd(result,j->data);
-        j=j->next;
-    }
-    return result;
+    if(list1) temp->next=list1;
+    if(list2) temp->next=list2;
+    return dummy->next;
 }
 
 int main(){
