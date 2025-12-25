@@ -3,20 +3,54 @@ using namespace std;
 
 //merge two SORTED array 
 
-void merge(vector<int>&arr1,vector<int>&arr2,int n,int m){
-    int left=n-1;
-    int right=0;
-    while(left>=0 && right<n){
-        if(arr1[left]>arr2[right]){
-            swap(arr1[left],arr2[right]);
-            left--;
-            right++;
-        }else{
-            break;
-        }
+// void merge(vector<int>&arr1,vector<int>&arr2,int n,int m){
+//     int left=n-1;
+//     int right=0;
+//     while(left>=0 && right<n){
+//         if(arr1[left]>arr2[right]){
+//             swap(arr1[left],arr2[right]);
+//             left--;
+//             right++;
+//         }else{
+//             break;
+//         }
+//     }
+//     sort(arr1.begin(),arr1.end());
+//     sort(arr2.begin(),arr2.end());
+// }
+
+//using shell sort(gap) method
+void swapGreat(vector<int>&arr1,vector<int>&arr2,int left,int right){
+    if(arr1[left]>arr2[right]){
+        swap(arr1[left],arr2[right]);
     }
-    sort(arr1.begin(),arr1.end());
-    sort(arr2.begin(),arr2.end());
+}
+
+void merge(vector<int>&arr1,vector<int>&arr2,int n,int m){
+    int len=n+m;
+    int gap=len/2;   //(len/2)+(len%2)= ceil of 4.5(4+1=5)
+    while(gap>0){
+        int left=0;
+        int right=left+gap;
+        while(right<len){
+            //arr1 and arr2
+            if(left<n && right>=n){
+                swapGreat(arr1,arr2,left,right-n);
+            }
+            
+            //arr2 and arr2
+            else if(left>=n){
+                swapGreat(arr2,arr2,left-n,right-n);
+            }
+
+            //arr1 and arr1
+            else{
+                swapGreat(arr1,arr1,left,right);
+            }
+            left++,right++;
+        }
+        gap/=2;
+    }
 }
 
 int main(){
