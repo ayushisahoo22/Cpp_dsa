@@ -27,37 +27,22 @@ void insertNode(node* &head, int val) {
 
 //LENGTH APPROACH
 // Utility function to get the difference in lengths of two linked lists
-int getDifference(node* head1, node* head2) {
-    int len1 = 0, len2 = 0;
-    while (head1 != NULL || head2 != NULL) {
-        if (head1 != NULL) {
-            ++len1;
-            head1 = head1->next;
-        }
-        if (head2 != NULL) {
-            ++len2;
-            head2 = head2->next;
-        }
-    }
-    return len1 - len2;  // If negative, length of list2 > length of list1, else vice-versa
-}
+// 
 
-// Utility function to check presence of intersection
-node* intersectionPresent(node* head1, node* head2) {
-    int diff = getDifference(head1, head2);
-    
-    if (diff < 0) 
-        while (diff++ != 0) head2 = head2->next;
-    else 
-        while (diff-- != 0) head1 = head1->next;
-    
-    // Traverse both lists and compare node by node
-    while (head1 != NULL) {
-        if (head1 == head2) return head1;  // Intersection point found
-        head2 = head2->next;
-        head1 = head1->next;
+//POINTER APPROACH
+node *intersectionPresent(node *headA, node *headB) {
+    node *temp1=headA;
+    node *temp2=headB;
+    // Traverse both lists, when one reaches the end, redirect it to the head of the other list
+    //to cover the dist b/w the two
+    while(temp1!=temp2){
+        temp1=temp1->next;
+        temp2=temp2->next;
+        if(temp1==temp2) return temp1;
+        if(temp1==NULL) temp1=headB;
+        if(temp2==NULL) temp2=headA;
     }
-    return head1;  // Return NULL if no intersection
+    return temp1; // If they meet, return the intersection node, otherwise NULL
 }
 
 // Utility function to print linked list
