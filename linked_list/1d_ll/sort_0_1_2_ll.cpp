@@ -45,6 +45,7 @@ public:
     }
 };
 
+//    TC->O(N)  SC->O(1)
 // Solution class containing YOUR logic
 class Solution {
 public:
@@ -52,45 +53,44 @@ public:
     // Using ONE dummy list and creating NEW nodes
     void sortZeroOneTwo(LinkedList& ll) {
 
-        Node* dummy = new Node(-1);
+        Node dummy(-1);
 
         // Boundaries inside the same list
-        Node* zeroEnd = dummy;
-        Node* oneEnd  = dummy;
-        Node* tail    = dummy;
+        Node* zeroEnd = &dummy;
+        Node* oneEnd  = &dummy;
+        Node* tail    = &dummy;
 
         Node* curr = ll.head;
 
         while (curr) {
-            Node* newNode = new Node(curr->data);
-
+            Node *nextNode=curr->next;
+            curr->next=nullptr;
             if (curr->data == 0) {
                 // insert after zeroEnd
-                newNode->next = zeroEnd->next;
-                zeroEnd->next = newNode;
+                curr->next = zeroEnd->next;
+                zeroEnd->next = curr;
                 if (oneEnd == zeroEnd)
-                    oneEnd = newNode;
+                    oneEnd = curr;
                 if (tail == zeroEnd)
-                    tail = newNode;
-                zeroEnd = newNode;
+                    tail = curr;
+                zeroEnd = curr;
             }
             else if (curr->data == 1) {
                 // insert after oneEnd
-                newNode->next = oneEnd->next;
-                oneEnd->next = newNode;
+                curr->next=oneEnd->next;
+                oneEnd->next=curr;
                 if (tail == oneEnd)
-                    tail = newNode;
-                oneEnd = newNode;
+                    tail = curr;
+                oneEnd = curr;
             }
             else { // data == 2
                 // insert at end
-                tail->next = newNode;
-                tail = newNode;
+                tail->next = curr;
+                tail = curr;
             }
-            curr = curr->next;
+            curr = nextNode;
         }
-        ll.head = dummy->next;
-        delete dummy;
+        ll.head = dummy.next;
     }
 };
 
