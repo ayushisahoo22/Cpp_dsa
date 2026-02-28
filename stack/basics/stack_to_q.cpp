@@ -1,0 +1,69 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// Queue implementation using stack
+class StackQueue {
+private:
+    stack <int> st1, st2;
+
+public: 
+    // Empty Constructor
+    StackQueue () {
+        
+    }
+    // Method to push elements in the queue - when push is not used much so its tc->O(N)
+    void push(int x) {
+        while (!st1.empty()) {
+            st2.push(st1.top());
+            st1.pop();
+        }
+        st1.push(x);
+        while (!st2.empty()) {
+            st1.push(st2.top());
+            st2.pop();
+        }
+    }
+    int pop() {
+        if (st1.empty()) {
+            cout << "Stack is empty";
+            return -1; 
+        }
+        int topElement = st1.top();
+        st1.pop(); 
+        return topElement; 
+    }
+    int peek() {
+        if (st1.empty()) {
+            cout << "Stack is empty";
+            return -1; 
+        }
+        return st1.top();
+    }
+    bool isEmpty() {
+        return st1.empty();
+    }
+};
+
+int main() {
+    StackQueue q;
+    // List of commands
+    vector<string> commands = {"StackQueue", "push", "push", 
+                               "pop", "peek", "isEmpty"};
+    // List of inputs
+    vector<vector<int>> inputs = {{}, {4}, {8}, {}, {}, {}};
+    for (int i = 0; i < commands.size(); ++i) {
+        if (commands[i] == "push") {
+            q.push(inputs[i][0]);
+            cout << "null ";
+        } else if (commands[i] == "pop") {
+            cout << q.pop() << " ";
+        } else if (commands[i] == "peek") {
+            cout << q.peek() << " ";
+        } else if (commands[i] == "isEmpty") {
+            cout << (q.isEmpty() ? "true" : "false") << " ";
+        } else if (commands[i] == "StackQueue") {
+            cout << "null ";
+        }
+    }
+    return 0;
+}
