@@ -50,6 +50,5 @@ int main() {
             cout << "null ";
         }
     }
-
     return 0;
 }
