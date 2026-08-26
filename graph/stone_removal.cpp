@@ -27,7 +27,7 @@ class DisjointSet{
             size[ult_v]+=size[ult_u];
         }else{
             parent[ult_v]=ult_u;
-            size[ult_u]=size[ult_v];
+            size[ult_u]+=size[ult_v];
         }
     }
 };
